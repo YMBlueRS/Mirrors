@@ -33,10 +33,11 @@
 
 [CmdletBinding()]
 param(
-  [switch]$TimeStamp,
   [switch]$FullCheck,
   [switch]$Excel
 )
+
+$TimeStamp = $true
 
 # Gather KB from all patches installed
 function returnHotFixID {
