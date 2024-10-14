@@ -257,9 +257,9 @@ function Invoke-WP
   # Manually added Regex search strings from https://github.com/peass-ng/PEASS-ng/blob/master/build_lists/sensitive_files.yaml
 
   # Set these values to true to add them to the regex search by default
-  $password = $true
-  $username = $true
-  $webAuth = $true
+  $password = $false
+  $username = $false
+  $webAuth = $false
 
   $regexSearch = @{}
 
@@ -484,7 +484,7 @@ function Invoke-WP
 
   if($FullCheck){$Excel = $true}
 
-  $regexSearch.add("IPs", "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)")
+  #$regexSearch.add("IPs", "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)")
   $Drives = Get-PSDrive | Where-Object { $_.Root -like "*:\" }
   $fileExtensions = @("*.xml", "*.txt", "*.conf", "*.config", "*.cfg", "*.ini", ".y*ml", "*.log", "*.bak", "*.xls", "*.xlsx", "*.xlsm")
 
