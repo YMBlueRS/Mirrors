@@ -129,7 +129,7 @@ function Invoke-BloodHound
 
         Port LDAP is running on. Defaults to 389/636 for LDAPS
 
-    .PARAMETER SecureLDAP
+    .PARAMETER ForceSecureLDAP
 
         Connect to LDAPS (LDAP SSL) instead of regular LDAP
         
@@ -317,7 +317,7 @@ function Invoke-BloodHound
         $LdapPort,
 
         [Switch]
-        $SecureLdap,
+        $ForceSecureLdap,
         
         [Switch]
         $DisableCertVerification,
